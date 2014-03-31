@@ -48,6 +48,7 @@ module.exports = function (opts, cb) {
                                 logEvent('error', error.message, opts);
                             } else {
                                 if (newRevision !== latestRevision) {
+                                    latestRevision = newRevision;
                                     logEvent('git pull');
                                     cb();
                                 }
