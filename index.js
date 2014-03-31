@@ -5,6 +5,7 @@ var exec = require('child_process').exec;
 /**
  * @typedef {Object} GulpWatchGitOptions
  * @property {Number} [pullTimeout=3600000]
+ * @property {String} [directory=.]
  */
 
 /**
@@ -17,6 +18,8 @@ module.exports = function (opts, cb) {
         opts = {};
     }
 
+    var directory = opts.dir || '.';
+
     opts.pullTimeout = opts.pullTimeout || 3600000;
 
     if (cb) {
@@ -27,11 +30,11 @@ module.exports = function (opts, cb) {
     }
 
     function getLatestRevision(cb) {
-        exec('git log -1 --format=%H', cb);
+        exec('cd ' + directory + ' && git log -1 --format=%H', cb);
     }
 
     function pullChanges(cb) {
-        exec('git pull', cb);
+        exec('cd ' + directory + ' && git pull', cb);
     }
 
     getLatestRevision(function (error, latestRevision) {
