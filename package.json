@@ -1,0 +1,25 @@
+{
+  "author": "Marat Dulin <mdevils@yandex.ru>",
+  "description": "Short package description",
+  "name": "gulp-watch-git",
+  "version": "1.0.0",
+  "contributors": [
+    {
+      "name": "Marat Dulin",
+      "email": "mdevils@yandex.ru"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "gulp-batch": "^0.4.1"
+  },
+  "devDependencies": {
+    "jshint": "2.1.3",
+    "jscs": "1.0.0"
+  },
+  "scripts": {
+    "test": "make lint"
+  }
+}
