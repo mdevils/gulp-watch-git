@@ -1,4 +1,3 @@
-var path = require('path');
 var batch = require('gulp-batch');
 var gutil = require('gulp-util');
 var exec = require('child_process').exec;
@@ -37,16 +36,16 @@ module.exports = function (opts, cb) {
 
     getLatestRevision(function (error, latestRevision) {
         if (error) {
-            logEvent('error', error.message, opts)
+            logEvent('error', error.message, opts);
         } else {
             setInterval(function () {
                 pullChanges(function (error) {
                     if (error) {
-                        logEvent('error', error.message, opts)
+                        logEvent('error', error.message, opts);
                     } else {
                         getLatestRevision(function (error, newRevision) {
                             if (error) {
-                                logEvent('error', error.message, opts)
+                                logEvent('error', error.message, opts);
                             } else {
                                 if (newRevision !== latestRevision) {
                                     logEvent('git pull');
@@ -56,7 +55,7 @@ module.exports = function (opts, cb) {
                         });
                     }
                 });
-            }, opts.pullTimeout)
+            }, opts.pullTimeout);
         }
     });
 };
